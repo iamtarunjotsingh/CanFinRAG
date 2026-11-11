@@ -8,10 +8,10 @@ are complete.
 ## Current status
 
 - **Last updated:** 2026-11-11
-- **Current phase:** Phase 4 - Evaluation dataset and metrics
+- **Current phase:** Phase 5 - Answer generation and citations
 - **Phase status:** In progress
-- **Overall status:** Ingestion and retrieval baselines are implemented; evaluation is underway
-- **Overall estimate:** 40-45%
+- **Overall status:** Ingestion, retrieval, and an initial evaluation set are implemented
+- **Overall estimate:** 45-50%
 
 ## Phase tracking
 
@@ -21,8 +21,8 @@ are complete.
 | 1. Project structure and configuration | Complete | Planned directories and minimal Python project configuration created and validated |
 | 2. Source ingestion and chunking | Complete* | Extract, clean, and chunk available source PDFs with page metadata |
 | 3. Indexing and retrieval | Complete* | Build reproducible chunk storage and dense, BM25, and hybrid retrieval |
-| 4. Evaluation dataset and metrics | In progress | Add questions and retrieval/answer quality measurements |
-| 5. Answer generation and citations | Not started | Add provider abstraction and grounded citation responses |
+| 4. Evaluation dataset and metrics | Complete* | Add questions and retrieval/answer quality measurements |
+| 5. Answer generation and citations | In progress | Add provider abstraction and grounded citation responses |
 | 6. API and frontend | Not started | Implement FastAPI and Streamlit interfaces |
 | 7. Testing, observability, and deployment | Not started | Add tests, logging, Docker, and deployment configuration |
 | 8. Technical write-up | Not started | Document architecture, results, limitations, and setup |
@@ -48,6 +48,8 @@ are complete.
   in `app/retrieval/dense.py`; the full suite now passes with 8 tests.
 - Added Hit@k and reciprocal-rank metrics in `evaluation/metrics.py`; the full
   suite now passes with 10 tests.
+- Added an initial eight-question evaluation set in
+  `evaluation/questions.jsonl`, including an intentionally absent question.
 
 ## Completed Phase 1 tasks
 
@@ -82,9 +84,19 @@ of evaluation work.
 
 ## Current Phase 4 tasks
 
-- [ ] Add a manually authored evaluation question set.
+- [x] Add a manually authored evaluation question set.
 - [x] Implement Hit@k and reciprocal-rank metrics.
 - [x] Add retrieval evaluation tests.
+
+`*` Phase 4 is complete for the currently available report with an initial
+eight-question set. Expand it to the planned 40-50 questions as more sources
+are added.
+
+## Current Phase 5 tasks
+
+- [ ] Add an LLM provider abstraction.
+- [ ] Add grounded prompting and citation formatting.
+- [ ] Add tests for insufficient evidence and citation output.
 
 ## Blockers and risks
 
@@ -94,9 +106,9 @@ of evaluation work.
 
 ## Next step
 
-After the Phase 4 tasks are complete, update this file to mark Phase 4 complete
-and move to **Phase 5 - Answer generation and citations**. Do not start a later
-phase while this file still shows an incomplete prerequisite.
+After the Phase 5 tasks are complete, update this file to mark Phase 5 complete
+and move to **Phase 6 - API and frontend**. Do not start a later phase while
+this file still shows an incomplete prerequisite.
 
 ## Update log
 
@@ -109,3 +121,4 @@ phase while this file still shows an incomplete prerequisite.
 | 2026-11-11 | Persisted 47 chunks, added BM25 retrieval, and passed 6 tests. |
 | 2026-11-11 | Added dense and hybrid retrieval; passed 8 tests and started Phase 4. |
 | 2026-11-11 | Added evaluation metrics and tests; full suite passes with 10 tests. |
+| 2026-11-11 | Added an initial 8-question evaluation set and started Phase 5. |
