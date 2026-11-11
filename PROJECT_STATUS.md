@@ -8,10 +8,10 @@ are complete.
 ## Current status
 
 - **Last updated:** 2026-11-11
-- **Current phase:** Phase 6 - API and frontend
+- **Current phase:** Phase 8 - Technical write-up
 - **Phase status:** In progress
-- **Overall status:** Provider-backed grounded generation is implemented; API/frontend work is next
-- **Overall estimate:** 50-55%
+- **Overall status:** Core application and deployment configuration are implemented; documentation is next
+- **Overall estimate:** 60-65%
 
 ## Phase tracking
 
@@ -23,9 +23,9 @@ are complete.
 | 3. Indexing and retrieval | Complete* | Build reproducible chunk storage and dense, BM25, and hybrid retrieval |
 | 4. Evaluation dataset and metrics | Complete* | Add questions and retrieval/answer quality measurements |
 | 5. Answer generation and citations | Complete* | Add provider abstraction and grounded citation responses |
-| 6. API and frontend | In progress | Implement FastAPI and Streamlit interfaces |
-| 7. Testing, observability, and deployment | Not started | Add tests, logging, Docker, and deployment configuration |
-| 8. Technical write-up | Not started | Document architecture, results, limitations, and setup |
+| 6. API and frontend | Complete* | Implement FastAPI and Streamlit interfaces |
+| 7. Testing, observability, and deployment | Complete* | Add tests, logging, Docker, and deployment configuration |
+| 8. Technical write-up | In progress | Document architecture, results, limitations, and setup |
 
 ## Completed work
 
@@ -55,6 +55,14 @@ are complete.
 - Added grounded prompt construction and citation requirements in
   `app/generation/prompting.py`.
 - Added provider/prompt tests; the full suite now passes with 12 tests.
+- Added FastAPI `/health` and `/query` endpoints in `app/api/main.py`.
+- Added a Streamlit chat client in `frontend/streamlit_app.py`.
+- Connected BM25 retrieval to grounded Ollama/Copilot generation and validated a
+  live Ollama query with citations.
+- Added citation validation so unsupported model page references are rejected.
+- Full suite now passes with 14 tests.
+- Added request/error logging without query contents or secrets.
+- Added `Dockerfile`, `docker-compose.yml`, and `.dockerignore`.
 
 ## Completed Phase 1 tasks
 
@@ -109,9 +117,28 @@ before an end-to-end generation call can be verified.
 
 ## Current Phase 6 tasks
 
-- [ ] Add the FastAPI health and query endpoints.
-- [ ] Connect retrieval to grounded answer generation.
-- [ ] Add the Streamlit chat interface.
+- [x] Add the FastAPI health and query endpoints.
+- [x] Connect retrieval to grounded answer generation.
+- [x] Add the Streamlit chat interface.
+
+`*` Phase 6 is complete for the initial local deployment path. The live Ollama
+model returned a successful citation-validated query response.
+
+## Current Phase 7 tasks
+
+- [x] Add structured request/error logging without secrets.
+- [x] Add Docker and service health-check configuration.
+- [x] Run broader API and end-to-end validation.
+
+`*` Phase 7 is complete for code-level validation. The full suite passes with
+14 tests and the live Ollama API path was verified. Docker Compose syntax could
+not be executed because Docker is not installed in this environment.
+
+## Current Phase 8 tasks
+
+- [ ] Document architecture, local setup, and provider configuration.
+- [ ] Document evaluation results, limitations, and remaining risks.
+- [ ] Add a concise project README.
 
 ## Blockers and risks
 
@@ -121,9 +148,9 @@ before an end-to-end generation call can be verified.
 
 ## Next step
 
-After the Phase 6 tasks are complete, update this file to mark Phase 6 complete
-and move to **Phase 7 - Testing, observability, and deployment**. Do not start a
-later phase while this file still shows an incomplete prerequisite.
+After the Phase 8 tasks are complete, update this file to mark Phase 8 complete
+and record the remaining roadmap items. Do not treat the project as production
+ready while source coverage, evaluation size, and Docker validation remain open.
 
 ## Update log
 
@@ -138,3 +165,5 @@ later phase while this file still shows an incomplete prerequisite.
 | 2026-11-11 | Added evaluation metrics and tests; full suite passes with 10 tests. |
 | 2026-11-11 | Added an initial 8-question evaluation set and started Phase 5. |
 | 2026-11-11 | Added Ollama/Copilot providers, grounded prompts, and passed 12 tests; started Phase 6. |
+| 2026-11-11 | Added FastAPI, Streamlit, citation validation, and verified a live Ollama query; started Phase 7. |
+| 2026-11-11 | Added request logging and Docker configuration; 14 tests pass; started Phase 8. |
