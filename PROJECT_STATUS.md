@@ -9,9 +9,9 @@ are complete.
 
 - **Last updated:** 2026-11-11
 - **Current phase:** Phase 8 - Technical write-up
-- **Phase status:** In progress
-- **Overall status:** Core application and deployment configuration are implemented; documentation is next
-- **Overall estimate:** 60-65%
+- **Phase status:** Complete*
+- **Overall status:** Initial end-to-end demo is documented; expansion and production validation remain
+- **Overall estimate:** 65-70%
 
 ## Phase tracking
 
@@ -25,7 +25,7 @@ are complete.
 | 5. Answer generation and citations | Complete* | Add provider abstraction and grounded citation responses |
 | 6. API and frontend | Complete* | Implement FastAPI and Streamlit interfaces |
 | 7. Testing, observability, and deployment | Complete* | Add tests, logging, Docker, and deployment configuration |
-| 8. Technical write-up | In progress | Document architecture, results, limitations, and setup |
+| 8. Technical write-up | Complete* | Document architecture, results, limitations, and setup |
 
 ## Completed work
 
@@ -63,6 +63,8 @@ are complete.
 - Full suite now passes with 14 tests.
 - Added request/error logging without query contents or secrets.
 - Added `Dockerfile`, `docker-compose.yml`, and `.dockerignore`.
+- Added `README.md` covering architecture, setup, providers, testing,
+  evaluation, and limitations.
 
 ## Completed Phase 1 tasks
 
@@ -136,9 +138,13 @@ not be executed because Docker is not installed in this environment.
 
 ## Current Phase 8 tasks
 
-- [ ] Document architecture, local setup, and provider configuration.
-- [ ] Document evaluation results, limitations, and remaining risks.
-- [ ] Add a concise project README.
+- [x] Document architecture, local setup, and provider configuration.
+- [x] Document evaluation results, limitations, and remaining risks.
+- [x] Add a concise project README.
+
+`*` Phase 8 is complete for the current demo scope. The roadmap remains open
+for additional sources, a 40-50 question evaluation set, production embedding
+benchmarks, and Docker execution validation.
 
 ## Blockers and risks
 
@@ -148,8 +154,8 @@ not be executed because Docker is not installed in this environment.
 
 ## Next step
 
-After the Phase 8 tasks are complete, update this file to mark Phase 8 complete
-and record the remaining roadmap items. Do not treat the project as production
+The planned implementation phases are complete for the current demo scope.
+Continue tracking expansion work here; do not treat the project as production
 ready while source coverage, evaluation size, and Docker validation remain open.
 
 ## Update log
@@ -167,3 +173,5 @@ ready while source coverage, evaluation size, and Docker validation remain open.
 | 2026-11-11 | Added Ollama/Copilot providers, grounded prompts, and passed 12 tests; started Phase 6. |
 | 2026-11-11 | Added FastAPI, Streamlit, citation validation, and verified a live Ollama query; started Phase 7. |
 | 2026-11-11 | Added request logging and Docker configuration; 14 tests pass; started Phase 8. |
+| 2026-11-11 | Added the technical analysis and interview preparation documents. |
+| 2026-11-11 | Added README technical write-up and completed the initial demo roadmap. |

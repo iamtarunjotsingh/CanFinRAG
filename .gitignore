@@ -16,6 +16,9 @@ htmlcov/
 .env.*
 !.env.example
 
+# Local interview preparation
+INTERVIEW_GUIDE.md
+
 # Generated indexes and processed data
 data/processed/*
 !data/processed/.gitkeep
