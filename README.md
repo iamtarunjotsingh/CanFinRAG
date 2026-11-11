@@ -58,9 +58,23 @@ Start the API:
 .\venv\Scripts\python.exe -m uvicorn app.api.main:app --reload
 ```
 
-Start the frontend in another terminal:
+## Run the Streamlit UI
+
+Start the FastAPI backend first and keep it running. Then open a second
+PowerShell terminal from the project root:
 
 ```powershell
+.\venv\Scripts\python.exe -m streamlit run frontend\streamlit_app.py
+```
+
+Streamlit opens the browser automatically. If it does not, open
+`http://localhost:8501`.
+
+The UI sends questions to `http://localhost:8000/query`. To use another API
+address:
+
+```powershell
+$env:CANFINRAG_API_URL = "http://localhost:8000"
 .\venv\Scripts\python.exe -m streamlit run frontend\streamlit_app.py
 ```
 
