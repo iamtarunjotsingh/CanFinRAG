@@ -4,6 +4,10 @@ pydantic-settings>=2.6
 streamlit>=1.40
 uvicorn[standard]>=0.32
 
+[llm]
+github-copilot-sdk>=0.1
+httpx>=0.28
+
 [retrieval]
 faiss-cpu>=1.9
 rank-bm25>=0.2

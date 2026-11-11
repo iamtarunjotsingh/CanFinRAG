@@ -8,10 +8,10 @@ are complete.
 ## Current status
 
 - **Last updated:** 2026-11-11
-- **Current phase:** Phase 5 - Answer generation and citations
+- **Current phase:** Phase 6 - API and frontend
 - **Phase status:** In progress
-- **Overall status:** Ingestion, retrieval, and an initial evaluation set are implemented
-- **Overall estimate:** 45-50%
+- **Overall status:** Provider-backed grounded generation is implemented; API/frontend work is next
+- **Overall estimate:** 50-55%
 
 ## Phase tracking
 
@@ -22,8 +22,8 @@ are complete.
 | 2. Source ingestion and chunking | Complete* | Extract, clean, and chunk available source PDFs with page metadata |
 | 3. Indexing and retrieval | Complete* | Build reproducible chunk storage and dense, BM25, and hybrid retrieval |
 | 4. Evaluation dataset and metrics | Complete* | Add questions and retrieval/answer quality measurements |
-| 5. Answer generation and citations | In progress | Add provider abstraction and grounded citation responses |
-| 6. API and frontend | Not started | Implement FastAPI and Streamlit interfaces |
+| 5. Answer generation and citations | Complete* | Add provider abstraction and grounded citation responses |
+| 6. API and frontend | In progress | Implement FastAPI and Streamlit interfaces |
 | 7. Testing, observability, and deployment | Not started | Add tests, logging, Docker, and deployment configuration |
 | 8. Technical write-up | Not started | Document architecture, results, limitations, and setup |
 
@@ -50,6 +50,11 @@ are complete.
   suite now passes with 10 tests.
 - Added an initial eight-question evaluation set in
   `evaluation/questions.jsonl`, including an intentionally absent question.
+- Added Ollama and GitHub Copilot SDK providers with Ollama-first fallback,
+  configured for `qwen2.5:7b`, in `app/generation/providers.py`.
+- Added grounded prompt construction and citation requirements in
+  `app/generation/prompting.py`.
+- Added provider/prompt tests; the full suite now passes with 12 tests.
 
 ## Completed Phase 1 tasks
 
@@ -94,9 +99,19 @@ are added.
 
 ## Current Phase 5 tasks
 
-- [ ] Add an LLM provider abstraction.
-- [ ] Add grounded prompting and citation formatting.
-- [ ] Add tests for insufficient evidence and citation output.
+- [x] Add an LLM provider abstraction.
+- [x] Add grounded prompting and citation formatting.
+- [x] Add tests for insufficient evidence and citation output.
+
+`*` Phase 5 is complete for the provider and prompt layer. Ollama must be
+running locally, and the Copilot SDK runtime must be available and authenticated
+before an end-to-end generation call can be verified.
+
+## Current Phase 6 tasks
+
+- [ ] Add the FastAPI health and query endpoints.
+- [ ] Connect retrieval to grounded answer generation.
+- [ ] Add the Streamlit chat interface.
 
 ## Blockers and risks
 
@@ -106,9 +121,9 @@ are added.
 
 ## Next step
 
-After the Phase 5 tasks are complete, update this file to mark Phase 5 complete
-and move to **Phase 6 - API and frontend**. Do not start a later phase while
-this file still shows an incomplete prerequisite.
+After the Phase 6 tasks are complete, update this file to mark Phase 6 complete
+and move to **Phase 7 - Testing, observability, and deployment**. Do not start a
+later phase while this file still shows an incomplete prerequisite.
 
 ## Update log
 
@@ -122,3 +137,4 @@ this file still shows an incomplete prerequisite.
 | 2026-11-11 | Added dense and hybrid retrieval; passed 8 tests and started Phase 4. |
 | 2026-11-11 | Added evaluation metrics and tests; full suite passes with 10 tests. |
 | 2026-11-11 | Added an initial 8-question evaluation set and started Phase 5. |
+| 2026-11-11 | Added Ollama/Copilot providers, grounded prompts, and passed 12 tests; started Phase 6. |

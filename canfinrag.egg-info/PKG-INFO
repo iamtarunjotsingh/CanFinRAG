@@ -12,6 +12,9 @@ Provides-Extra: retrieval
 Requires-Dist: faiss-cpu>=1.9; extra == "retrieval"
 Requires-Dist: rank-bm25>=0.2; extra == "retrieval"
 Requires-Dist: sentence-transformers>=3.3; extra == "retrieval"
+Provides-Extra: llm
+Requires-Dist: github-copilot-sdk>=0.1; extra == "llm"
+Requires-Dist: httpx>=0.28; extra == "llm"
 Provides-Extra: testing
 Requires-Dist: pytest>=8.3; extra == "testing"
 Requires-Dist: pytest-cov>=6.0; extra == "testing"
