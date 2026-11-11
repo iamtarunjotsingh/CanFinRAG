@@ -1,0 +1,17 @@
+Metadata-Version: 2.4
+Name: canfinrag
+Version: 0.1.0
+Summary: A citation-grounded RAG assistant for Canadian financial and regulatory documents.
+Requires-Python: >=3.13
+Requires-Dist: fastapi>=0.115
+Requires-Dist: pymupdf>=1.24
+Requires-Dist: pydantic-settings>=2.6
+Requires-Dist: streamlit>=1.40
+Requires-Dist: uvicorn[standard]>=0.32
+Provides-Extra: retrieval
+Requires-Dist: faiss-cpu>=1.9; extra == "retrieval"
+Requires-Dist: rank-bm25>=0.2; extra == "retrieval"
+Requires-Dist: sentence-transformers>=3.3; extra == "retrieval"
+Provides-Extra: testing
+Requires-Dist: pytest>=8.3; extra == "testing"
+Requires-Dist: pytest-cov>=6.0; extra == "testing"

@@ -1,0 +1,1 @@
+"""CanFinRAG application package."""
