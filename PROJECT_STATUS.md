@@ -8,10 +8,10 @@ are complete.
 ## Current status
 
 - **Last updated:** 2026-11-11
-- **Current phase:** Phase 3 - Indexing and retrieval
+- **Current phase:** Phase 4 - Evaluation dataset and metrics
 - **Phase status:** In progress
-- **Overall status:** Initial ingestion and BM25 baseline are working
-- **Overall estimate:** 35-40%
+- **Overall status:** Ingestion and retrieval baselines are implemented; evaluation is underway
+- **Overall estimate:** 40-45%
 
 ## Phase tracking
 
@@ -20,8 +20,8 @@ are complete.
 | 0. Planning and initial source registry | Complete | Plan and source registry exist; one PDF is downloaded |
 | 1. Project structure and configuration | Complete | Planned directories and minimal Python project configuration created and validated |
 | 2. Source ingestion and chunking | Complete* | Extract, clean, and chunk available source PDFs with page metadata |
-| 3. Indexing and retrieval | In progress | Build reproducible chunk storage and dense, BM25, and hybrid retrieval |
-| 4. Evaluation dataset and metrics | Not started | Add questions and retrieval/answer quality measurements |
+| 3. Indexing and retrieval | Complete* | Build reproducible chunk storage and dense, BM25, and hybrid retrieval |
+| 4. Evaluation dataset and metrics | In progress | Add questions and retrieval/answer quality measurements |
 | 5. Answer generation and citations | Not started | Add provider abstraction and grounded citation responses |
 | 6. API and frontend | Not started | Implement FastAPI and Streamlit interfaces |
 | 7. Testing, observability, and deployment | Not started | Add tests, logging, Docker, and deployment configuration |
@@ -44,6 +44,10 @@ are complete.
   `data/processed/chunks.jsonl`.
 - Added a BM25 retriever in `app/retrieval/bm25.py`.
 - Added retrieval tests; the full suite now passes with 6 tests.
+- Added dense cosine-similarity retrieval and hybrid BM25/dense score fusion
+  in `app/retrieval/dense.py`; the full suite now passes with 8 tests.
+- Added Hit@k and reciprocal-rank metrics in `evaluation/metrics.py`; the full
+  suite now passes with 10 tests.
 
 ## Completed Phase 1 tasks
 
@@ -69,8 +73,18 @@ are confirmed.
 - [x] Implement initial BM25 indexing and retrieval.
 - [x] Add a reproducible indexing command.
 - [x] Add focused retrieval tests.
-- [ ] Add dense vector retrieval.
-- [ ] Add hybrid score fusion and retrieval comparison experiments.
+- [x] Add dense vector retrieval.
+- [x] Add hybrid score fusion and retrieval comparison experiments.
+
+`*` Phase 3 retrieval implementations are complete and tested with an injected
+encoder. Selecting and benchmarking a production embedding model remains part
+of evaluation work.
+
+## Current Phase 4 tasks
+
+- [ ] Add a manually authored evaluation question set.
+- [x] Implement Hit@k and reciprocal-rank metrics.
+- [x] Add retrieval evaluation tests.
 
 ## Blockers and risks
 
@@ -80,8 +94,8 @@ are confirmed.
 
 ## Next step
 
-After the Phase 3 tasks are complete, update this file to mark Phase 3 complete
-and move to **Phase 4 - Evaluation dataset and metrics**. Do not start a later
+After the Phase 4 tasks are complete, update this file to mark Phase 4 complete
+and move to **Phase 5 - Answer generation and citations**. Do not start a later
 phase while this file still shows an incomplete prerequisite.
 
 ## Update log
@@ -93,3 +107,5 @@ phase while this file still shows an incomplete prerequisite.
 | 2026-11-11 | Installed dependencies, implemented PDF ingestion/chunking, and passed 4 tests. |
 | 2026-11-11 | Marked Phase 3 in progress after confirming Phase 2 completion. |
 | 2026-11-11 | Persisted 47 chunks, added BM25 retrieval, and passed 6 tests. |
+| 2026-11-11 | Added dense and hybrid retrieval; passed 8 tests and started Phase 4. |
+| 2026-11-11 | Added evaluation metrics and tests; full suite passes with 10 tests. |
